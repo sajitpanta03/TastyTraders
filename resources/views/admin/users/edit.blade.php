@@ -9,7 +9,7 @@
                     <h1> Update Category</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('categories.index')}}" class="btn btn-primary">Back</a>
+                    <a href="{{ route('users.index')}}" class="btn btn-primary">Back</a>
                 </div>
             </div>
         </div>
@@ -18,20 +18,21 @@
     <!-- Main content -->
     <section class="content">
        
+
             
         <!-- Default box -->
         <div class="container-fluid">
-            <form action="{{ route('categories.update', $categories->id) }}" method="post" id="categoryForm" name="categoryForm">
-				@csrf
+
+            <form action="{{ route('users.update', $users->id)}}" method="post" id="categoryForm" name="categoryForm">
+				@csrf                  
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    @foreach ($categories as $category)
-                                    <label for="name" values="{{ $category['name'] }}">Name</label>
+                                    <label for="name">Name</label>
                                     <input type="text" name="name" id="name" class="form-control"
-                                        placeholder="Name" value="">
+                                        placeholder="Name"  value={{$users->name}}>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +45,7 @@
         </div>
 	</form>        <!-- /.card -->
     </section>
-    @endforeach
+    
     <!-- /.content -->
 @endsection
 

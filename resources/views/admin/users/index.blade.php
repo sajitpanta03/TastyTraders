@@ -6,7 +6,10 @@
 	<div class="container-fluid my-2">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Users</h1>
+				<h1>Create Users</h1>
+			</div>
+			<div class="col-sm-6 text-right">
+				<a href="{{ route('users.create')}}" class="btn btn-primary">Create New user</a>
 			</div>
 		</div>
 	</div>
@@ -35,11 +38,14 @@
 									<thead>
 										<tr>
 											<th>Name</th>
+											<th width="0">Email</th>
+											<th width="0">Role</th>
 											<th width="0">Action</th>
+
 										</tr>
 									</thead>
 									<tbody>
-                                        @foreach ($users as $user)
+                                        @forelse ($users as $user)
                                             <tr>
                                                 <td>
                                                     <div class="card-body">
@@ -47,19 +53,32 @@
                                                             <h6 class="col-md-3">{{ $user['name'] }}</h6>
                                                         </div>
                                                 </td>
+												<td>
+                                                    <div class="card-body">
+                                                        <div class="col-md-3">
+                                                            <h6 class="col-md-3">{{ $user['email'] }}</h6>
+                                                        </div>
+                                                </td>
+												<td>
+                                                    <div class="card-body">
+                                                        <div class="col-md-3">
+                                                            <h6 class="col-md-3">{{ $user['role'] }}</h6>
+                                                        </div>
+                                                </td>
                                                 <td class="card-body">
-                                                    <a href={{'categories/edit/' . $category['id']}}
+                                                    <a href={{'users/edit/' . $user['id']}}
                                                         style="color: #000000;">
                                                         <i class="fa fa-edit">edit</i>
                                                     </a>
-                                                    <a href={{route('categories/destroy/' . $category['id'] )}} style="color: #000000;">
+                                                    <a href={{ 'users/destroy/' . $user['id'] }} style="color: #000000;">
                                                         <i class="text-danger w-4 h-4 mr-1 fa fa-trash">delete</i>
                                                     </a>
 
                                                 </td>
                                             </tr>
-                                        @endforeach
-
+											@empty
+											<tr></tr>
+											@endforelse
                                     </tbody>
 								</table>										
 							</div>

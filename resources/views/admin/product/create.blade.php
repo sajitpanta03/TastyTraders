@@ -19,29 +19,32 @@
     <section class="content">
         <!-- Default box -->
         <div class="container-fluid">
-            <form action="{{url('/admin/products/store')}}" method="post" id="categoryForm" name="categoryForm" enctype="multipart/form-data">
+            <form action="/admin/products/store" method="post" id="categoryForm" name="categoryForm" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-
+{{-- 
                                     <label for="name">Category</label>
                                     <select name="category" id="category">
                                         <option value="category">category</option>
-                                    </select><br>
+                                    </select><br> --}}
                                     <label for="name">Name</label>
                                     <input type="text" name="name" id="name" class="form-control"
                                         placeholder="Name"><br>
                                     <label for="name">Price</label>
-                                    <input type="number" name="number" id="number" class="form-control"
+                                    <input type="number" name="price" id="price" class="form-control"
                                         placeholder="Price"><br>
                                         <label for="name">Description</label>
                                     <input type="text" name="description" id="description" class="form-control"
                                         placeholder="Description"><br>
                                     <label for="image">Image Upload: </label>
                                     <input type="file" name="image">
+                                    @error('image')
+                                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

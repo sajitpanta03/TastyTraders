@@ -482,7 +482,7 @@ function createSelectedProductsContent(image, name, price, unit, discount, prese
     }
 
     newSpan[0].textContent = name;
-    newSpan[1].textContent = price + `Tk/${unit}`;
+    newSpan[1].textContent = price + `Rs/${unit}`;
     newSpan[2].textContent = discount + '%';
 
     for (let i = 0; i < 3; i++) {
@@ -687,11 +687,11 @@ function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, pre
     totalPrice = totalPrice.toFixed(2);
 
     newChildPara[1].innerHTML = itemName;
-    newChildPara[2].innerHTML = itemPrice + `Tk/${itemUnit}`;
+    newChildPara[2].innerHTML = itemPrice + `Rs/${itemUnit}`;
     newChildPara[3].innerHTML = itemDiscount + `%`;
-    newChildPara[4].innerHTML = presentPrice + `Tk/${itemUnit}`;
+    newChildPara[4].innerHTML = presentPrice + `Rs/${itemUnit}`;
     newChildPara[5].innerHTML = itemQuantity + ` ${itemUnit}`;
-    newChildPara[6].innerHTML = totalPrice + ` Tk`;
+    newChildPara[6].innerHTML = totalPrice + ` Rs`;
 
     for (let i = 0; i < 7; i++) {
         newChildDiv[i].appendChild(newChildPara[i]);
@@ -1499,8 +1499,8 @@ let overviewProductPrevIndex = null;
 
             if (overviewProductClassName === featuredProductClassName) {
                 overviewProductName[i].textContent = `${productName[j].textContent}`;
-                overviewProductPrice[i].textContent = `${productPrice[j].textContent}Tk/${productUnit[j].textContent}`;
-                overviewProductDiscountPrice[i].textContent = `${currentPrice[j].textContent}Tk/${productUnit[j].textContent}`;
+                overviewProductPrice[i].textContent = `${productPrice[j].textContent}Rs/${productUnit[j].textContent}`;
+                overviewProductDiscountPrice[i].textContent = `${currentPrice[j].textContent}Rs/${productUnit[j].textContent}`;
                 break;
             }
         }
@@ -1724,7 +1724,7 @@ function updatePopularProductInfo(index) {
             let freaturedProductClassName = getClassName(featuredProducts[j], 1);
             if (recentProductClassNameList[i] === freaturedProductClassName) {
                 recentProductItemName[i].textContent = `${productName[j].textContent}`;
-                recentProductItemPrice[i].textContent = `${productPrice[j].textContent} Tk/${productUnit[j].textContent}`;
+                recentProductItemPrice[i].textContent = `${productPrice[j].textContent} Rs/${productUnit[j].textContent}`;
                 recentProductItemUnits[i].textContent = `${productUnit[j].textContent}`;
             }
         }
@@ -2039,7 +2039,7 @@ function showGreatDealsProductPopup(index) {
                 let featuredProductPrice = `${productPrice[j].textContent}`;
                 let featuredProductDiscount = `${productDiscount[j].textContent}% off`;
                 let featuredProductCurrentPrice = `${currentPrice[j].textContent}`;
-                let featuredProductUnit = `Tk/${productUnit[j].textContent}`;
+                let featuredProductUnit = `Rs/${productUnit[j].textContent}`;
 
                 greatDealsProductPrice[i].textContent = featuredProductCurrentPrice;
                 greatDealsProductPrevPrice[i].textContent = featuredProductPrice;
@@ -2103,7 +2103,7 @@ let callToActionProductClassName = callToActionProductClass.split(' ')[1];
 
             callToActionProductImage.src = `${productImage[i].src}`;
             callToActionDiscountPercentage.textContent = `Save Upto ${productDiscount[i].textContent}%`;
-            callToActionOfferPrice.textContent = `${currentPrice[i].textContent}Tk Only`;
+            callToActionOfferPrice.textContent = `${currentPrice[i].textContent}Rs Only`;
             callToActionOfferMessage.textContent = `Offer available all ${callToActionProductType.textContent}`;
         }
     }

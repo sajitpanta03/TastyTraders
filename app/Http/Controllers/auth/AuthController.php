@@ -48,7 +48,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect('/')->withSuccess('Great! Your registration successed');
+        return redirect('/login')->withSuccess('Great! Your registration successed');
     }
 
     public function dashboard()

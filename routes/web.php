@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\DashbordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'index');
+// Dashbord page
+Route::get('/', [DashbordController::class, 'index'])->name('dashbord');
 
 // User Login page
 Route::view('/login', 'auth.login');

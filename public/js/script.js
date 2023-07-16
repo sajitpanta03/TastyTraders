@@ -1,8 +1,8 @@
 // ===============================
 //    Add, Get and Remove Class
 // ===============================
-
 // add class
+console.log("hello")
 function addClass(elem, classArr) {
     for (let i = 0; i < classArr.length; i++) {
         elem.classList.add(`${classArr[i]}`);

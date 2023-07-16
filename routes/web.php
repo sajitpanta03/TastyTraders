@@ -6,7 +6,9 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 // Dashbord page
 Route::get('/', [DashbordController::class, 'index'])->name('dashbord');
 
+// Search
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+
 // User Login page
 Route::view('/login', 'auth.login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
@@ -31,6 +36,9 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+// Checkout page
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 
 // Admin Dashbord Route

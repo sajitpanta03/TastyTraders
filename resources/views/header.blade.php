@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar">
         <div class="logo">
-            <a href="#"><span>TastyTraders.</span></a>
+            <a href="/"><span>TastyTraders.</span></a>
         </div>
 
         <ul class="menu-items">
@@ -13,12 +13,12 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <form>
+        <form action="{{route('search')}}">
             <div class="search-box">
-                <button class="search-icon">
+                <button type="submit" class="search-icon">
                     <span class="icon-search"></span>
                 </button>
-                <input type="search" name="search" placeholder="Search..." value="">
+                <input type="text" name="search" placeholder="search product">
             </div>
         </form>
 

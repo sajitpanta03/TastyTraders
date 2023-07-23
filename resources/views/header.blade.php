@@ -18,7 +18,7 @@
                 <button type="submit" class="search-icon">
                     <span class="icon-search"></span>
                 </button>
-                <input type="text" name="search" placeholder="search product">
+                <input type="text" name="search" placeholder="Search product">
             </div>
         </form>
 

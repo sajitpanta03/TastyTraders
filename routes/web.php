@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\DiscountController as AdminDiscountController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +33,10 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 // User Login page
 Route::view('/login', 'auth.login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
-Route::get('dashboard', [AuthController::class, 'dashboard']); 
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 // Checkout page
@@ -77,7 +79,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
         Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
         Route::get('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+        // Discount Route
+        Route::get('/discounts', [AdminDiscountController::class, 'index'])->name('discounts.index');
+        Route::get('/discounts/create', [AdminDiscountController::class, 'create'])->name('discounts.create');
+        Route::post('/discounts/store', [AdminDiscountController::class, 'store'])->name('discounts.store');
+        Route::get('/discounts/edit/{id}', [AdminDiscountController::class, 'edit'])->name('discounts.edit');
+        Route::put('/discounts/update/{id}', [AdminDiscountController::class, 'update'])->name('discounts.update');
+        Route::get('/discounts/destroy/{id}', [AdminDiscountController::class, 'destroy'])->name('discounts.destroy');
     });
 });
-
-

@@ -34,39 +34,20 @@
         </div>
         <!-- hero section end -->
 
+        <!-- service section start -->
+        <div id="services">
+           
+        </div>
+        <!-- service section end -->
+
+
+
+
 
         <!-- call to action area start - vegetables -->
-        <div class="new-arrivals new-arrivals-vegetables">
-            <div class="section-wrap new-arrivals-wrap">
-                <div class="new-arriavals-news">
-                    <h1>Fresh vegetables with great discount of 30% off</h1>
-                    <p>Big offers going on!</p>
-                    <button>View More</button>
-                </div>
-
-                <div class="new-arrivals-products">
                     <div class="new-arrival-card">
-                        <div class="new-arriava-card-image">
-                            <img src="img/vegetables/broccoli.jpg" alt="">
-                        </div>
-                        <div class="new-arrival-card-text">
-                            <h3>Broccoli</h3>
-                            <p>Card text</p>
-                        </div>
-                    </div>
-
-                    <div class="new-arrival-card">
-                        <div class="new-arriava-card-image">
-                            <img src="img/vegetables/zucchini.jpg" alt="">
-                        </div>
-                        <div class="new-arrival-card-text">
-                            <h3>Zucchini</h3>
-                            <p>Card text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        
+                        </div>       
         <!-- call to action area end - vegetables -->
 
 
@@ -76,282 +57,9 @@
         <!-- recent collections area start -->
         <div class="recent-collections">
             <div class="section-wrap recent-collections-wrap">
-                <div class="section-title">
-                    <h1>Recent Collections</h1>
-                </div>
+               
 
-                <!-- recent collection products start -->
-                <div class="wrapper">
-                    <ul class="filter-menu">
-                        <li data-list="fruits" class="active-menu">Fruits</li>
-                        <li data-list="vegetables">Vegetables</li>
-                        <li data-list="eggs">Eggs</li>
-                        <li data-list="dry-fruits">Dry Fruits</li>
-                        <li data-list="spices">Spices</li>
-                    </ul>
-
-                    <div class="filter-items">
-                        <div class="filter-content apple" data-item="fruits">
-                            <img src="img/fruits/apple.jpg" alt="apple_img">
-                            <p class="rec-item-name">Fresh </p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">460</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content broccoli" data-item="vegetables">
-                            <img src="img/vegetables/broccoli.jpg" alt="broccoli_img">
-                            <p class="rec-item-name">Broccoli</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">520</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content cabbage" data-item="vegetables">
-                            <img src="img/vegetables/cabbage.jpg" alt="cabbage_img">
-                            <p class="rec-item-name">Cabbage</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">640</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content carrot" data-item="vegetables">
-                            <img src="img/vegetables/carrot.jpg" alt="carrot_img">
-                            <p class="rec-item-name">Local Carrot</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">380</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content chicken-egg" data-item="eggs">
-                            <img src="img/eggs/chicken-egg.jpg" alt="chicken_egg_img">
-                            <p class="rec-item-name">Chicken Egg</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">240</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content orange-green" data-item="fruits">
-                            <img src="img/fruits/orange-green.jpg" alt="orange_green_img">
-                            <p class="rec-item-name">Green Orange</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">480</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content peach" data-item="fruits">
-                            <img src="img/fruits/peach.jpg" alt="peach_img">
-                            <p class="rec-item-name">Fresh Peach</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">120</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content mango" data-item="fruits">
-                            <img src="img/fruits/mango.jpg" alt="mango_img">
-                            <p class="rec-item-name">Fresh Mango</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">760</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content mix-spice" data-item="spices">
-                            <img src="img/spices/mix-spice.jpg" alt="mix_spice_img">
-                            <p class="rec-item-name">Mix Spice</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">420</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content almond" data-item="dry-fruits">
-                            <img src="img/dried fruits/almond.jpg" alt="almond_img">
-                            <p class="rec-item-name">Almond</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">460</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content clove" data-item="spices">
-                            <img src="img/spices/clove.jpg" alt="clove_img">
-                            <p class="rec-item-name">Clove</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">160</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content orange" data-item="fruits">
-                            <img src="img/fruits/orange.jpg" alt="orange_img">
-                            <p class="rec-item-name">Fresh Orange</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">240</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content dates" data-item="dry-fruits">
-                            <img src="img/fruits/date.jpg" alt="date_img">
-                            <p class="rec-item-name">Dates</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">380</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content lemon" data-item="fruits">
-                            <img src="img/fruits/lemon.jpg" alt="lemon_img">
-                            <p class="rec-item-name">Fresh Lemon</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">480</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content strawberry" data-item="fruits">
-                            <img src="img/fruits/strawberry.jpg" alt="strawberry_img">
-                            <p class="rec-item-name">Strawberry</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">340</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content duck-egg" data-item="eggs">
-                            <img src="img/eggs/duck-egg.jpg" alt="duck_egg_img">
-                            <p class="rec-item-name">Duck Egg</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">160</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content motorshuti" data-item="vegetables">
-                            <img src="img/vegetables/motorshuti.jpg" alt="motorshuti_img">
-                            <p class="rec-item-name">Motorshuti</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">340</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content blueberry" data-item="fruits">
-                            <img src="img/fruits/blueberry.jpg" alt="blueberry_img">
-                            <p class="rec-item-name">Blueberry</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">440</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content pomegranate" data-item="fruits">
-                            <img src="img/fruits/pomegranate.jpg" alt="pomegranate_img">
-                            <p class="rec-item-name">Pomegranate</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">280</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content peas" data-item="vegetables">
-                            <img src="img/vegetables/peas.jpg" alt="peas_img">
-                            <p class="rec-item-name">Peas</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">320</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content chili" data-item="vegetables">
-                            <img src="img/vegetables/chili.jpg" alt="chili_img">
-                            <p class="rec-item-name">Chili</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">160</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content zucchini" data-item="vegetables">
-                            <img src="img/vegetables/zucchini.jpg" alt="zucchini_img">
-                            <p class="rec-item-name">Zucchini</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">240</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content kiwi" data-item="fruits">
-                            <img src="img/fruits/kiwi.jpg" alt="kiwi_img">
-                            <p class="rec-item-name">Fresh Kiwi</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">320</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
-                            </div>
-                        </div>
-
-                        <div class="filter-content watermelon" data-item="fruits">
-                            <img src="img/fruits/watermelon.jpg" alt="watermelon_img">
-                            <p class="rec-item-name">Watermelon</p>
-                            <div class="rec-description">
-                                <p class="rec-item-price">product price</p>
-                                <p class="rec-total-sales">680</p>
-                                <p class="rec-item-unit">product unit</p>
-                                <p class="rec-item-status">Available</p>
+                   
                             </div>
                         </div>
                     </div>
@@ -616,7 +324,7 @@
                 </div>
             </div>
             <!-- customer support card end -->
-        </div>
+
 <script>
     function redirectToCheckout() {
         window.location.href = "/checkout";

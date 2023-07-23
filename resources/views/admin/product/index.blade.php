@@ -40,6 +40,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Images</th>
+                                <th>Discount</th>
                                 <th>Price</th>
                                 <th>Action</th>
                             </tr>
@@ -59,6 +60,25 @@
                                                 <h6 class="col-md-3">{{ $product['price'] }}</h6>
                                             </div>
                                     </td>
+
+                                    @if (empty($product->discount))
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="col-md-3">
+                                                    <h6 class="col-md-3">No discount</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    @else
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="col-md-3">
+                                                    <h6 class="col-md-3">{{ $product->discount->percentage }}%</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    @endif
+
                                     <td>
                                         <div class="card-body">
                                             <div class="com-md-3">
@@ -73,7 +93,7 @@
                                         </a>
 										<a href="{{ route('products.destroy', ['id' => $product['id']]) }}" style="color: #000000;">
 											<i class="text-danger w-4 h-4 mr-1 fa fa-trash"></i>Delete
-										</a>										
+										</a>
                                     </td>
                                 </tr>
                             @empty

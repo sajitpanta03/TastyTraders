@@ -2,7 +2,6 @@
 //    Add, Get and Remove Class
 // ===============================
 // add class
-console.log("hello")
 function addClass(elem, classArr) {
     for (let i = 0; i < classArr.length; i++) {
         elem.classList.add(`${classArr[i]}`);
@@ -447,7 +446,7 @@ function createSelectedProductsContent(image, name, price, unit, discount, prese
 
     // childrens of newCartDetails
     let newHeading2 = document.createElement('h2');
-    newHeading2.textContent = 'Product Details';
+    // newHeading2.textContent = 'Product Details';
 
     let newPara = [];
     let newStrong = [];
@@ -460,8 +459,6 @@ function createSelectedProductsContent(image, name, price, unit, discount, prese
     newStrong[1].textContent = 'Price: ';
     newStrong[2].textContent = 'Discount: ';
     newStrong[3].textContent = 'Quantity: ';
-    newStrong[4].textContent = 'Preservatives: ';
-    newStrong[5].textContent = 'Added Time: ';
 
     for (let i = 0; i < 6; i++) {
         newPara[i].appendChild(newStrong[i]);
@@ -489,14 +486,14 @@ function createSelectedProductsContent(image, name, price, unit, discount, prese
         newPara[i].appendChild(newSpan[i]);
     }
 
-    let preservativeSpan = document.createElement('span');
-    preservativeSpan.textContent = preservative;
+    // let preservativeSpan = document.createElement('span');
+    // preservativeSpan.textContent = preservative;
 
-    let timeSpan = document.createElement('span');
-    timeSpan.textContent = time;
+    // let timeSpan = document.createElement('span');
+    // timeSpan.textContent = time;
 
-    newPara[4].appendChild(preservativeSpan);
-    newPara[5].appendChild(timeSpan);
+    // newPara[4].appendChild(preservativeSpan);
+    // newPara[5].appendChild(timeSpan);
 
     let newShoppingButton = [];
 
@@ -961,7 +958,7 @@ function controlFavoriteProductItems(itemIndex) {
     // select 'Add to Cart' button of favorite item
     let favoriteItemAddToCartBtn = newfavoriteItem[itemIndex].children[2].children[2].children[0];
 
-    // actions while click 'Add to Cart' button of favorite item 
+    // actions while click 'Add to Cart' button of favorite item
     favoriteItemAddToCartBtn.addEventListener('click', function () {
         controlSelectedProductItems(itemIndex);
     });
@@ -976,7 +973,7 @@ function controlFavoriteProductItems(itemIndex) {
             controlSelectedProductItems(i);
         });
 
-        // actions while click favorite icon 
+        // actions while click favorite icon
         favoriteIcon[i].addEventListener('click', function () {
             controlFavoriteProductItems(i);
         });
@@ -1347,7 +1344,7 @@ let timeCount3 = setInterval((date, time) => {
 
 
 // =================================
-//    Outer Products Control Area 
+//    Outer Products Control Area
 // =================================
 
 // selecting notification box elements
@@ -1466,7 +1463,7 @@ function addOuterProductToFavoriteProductArea(productClass) {
 }
 
 // =====================================
-//    Outer Products Control Area End 
+//    Outer Products Control Area End
 // =====================================
 
 
@@ -1474,7 +1471,7 @@ function addOuterProductToFavoriteProductArea(productClass) {
 
 
 // =================================
-//    Product Overview Area Start 
+//    Product Overview Area Start
 // =================================
 
 // selecting product overview elements
@@ -1534,7 +1531,7 @@ let overviewProductPrevIndex = null;
 })();
 
 // ===============================
-//    Product Overview Area End 
+//    Product Overview Area End
 // ===============================
 
 

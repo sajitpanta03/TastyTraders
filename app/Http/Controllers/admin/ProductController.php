@@ -28,7 +28,7 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'image' => 'required|image',    
+            'image' => 'required|image',
         ]);
 
         $data = Product::create([

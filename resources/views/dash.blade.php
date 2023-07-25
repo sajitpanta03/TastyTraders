@@ -117,14 +117,14 @@
         <div class="featured-product-section" id="products">
             <div class="section-wrap">
                 <div class="section-title">
-                    <h1>Featured Products</h1>
+                    <h1></h1>
                 </div>
 
                 <!-- vegetables -->
                 <div class="featured-product-wrap vegetables">
                     <div class="sub-section-title">
-                        <p>Fresh Vegetables</p>
-                        <a href="#">See more <span class="icon-angle-double-right"></span></a>
+                        <p></p>
+                        {{-- <a href="#">See more <span class="icon-angle-double-right"></span></a> --}}
                     </div>
                 </div>
 
@@ -138,6 +138,7 @@
                         <div class="d-flex">
                             @foreach ($category->product as $product)
                                 <div class="product-wrap broccoli">
+                                    <a href="{{route('productPage', $product->id)}}">
                                     <div class="product-img">
                                         <img src="{{ url('storage/images/' . $product->image) }}" alt=""
                                             title="" />
@@ -145,23 +146,23 @@
 
                                     <div class="product-icons">
                                         <div class="add-to-favorite"><span class="icon-heart"></span></div>
-                                        <p><span class="discount">20</span></p>
+                                        <p><span class="discount">{{ $product->discount['percentage'] }}</span>%</p>
                                     </div>
 
                                     <div class="product-description">
-                                        <p class="product-name">{{ $product->name }}</p>
+                                       <a href="{{route('productPage', $product->id)}}"><p class="product-name">{{ $product->name }}</p>
                                         <p class="price">
                                             <strong>Price:</strong>
                                             <del>
                                                 <span class="f-product-price">{{ $product->price }}</span>Rs/pcs
                                             </del>
-                                            <strong>Discount:</strong>
-                                                <span class="f-product-price">{{ $product->discount['percentage'] }}</span>%
+                                            {{-- <strong>Discount:</strong>
+                                                <span class="f-product-price">{{ $product->discount['percentage'] }}</span>% --}}
                                             <ins>
-                                                <span class="f-cur-price"></span>
                                             </ins>
                                             <span class="f-product-unit">pcs</span>
                                         </p>
+                                       </a>
                                         <div class="add-to-cart-btn">
                                             <p><span class="icon-cart-plus"></span> Add to Cart</p>
                                         </div>
@@ -175,7 +176,7 @@
 
 
             {{-- test start --}}
-
+`
             {{-- test end --}}
 
             <!-- shopping cart area start -->

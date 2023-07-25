@@ -10,6 +10,7 @@ use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\ProductPageController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,9 @@ Route::get('/', [DashbordController::class, 'index'])->name('dashbord');
 
 // Search
 Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+// Product page
+Route::get('productPage/{id}', [ProductPageController::class, 'index'])->name('productPage');
 
 // User Login page
 Route::view('/login', 'auth.login');

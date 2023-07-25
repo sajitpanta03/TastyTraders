@@ -298,7 +298,7 @@ let productImage = document.querySelectorAll('.product-img img');
 let productPrice = document.querySelectorAll('.f-product-price');
 let productDiscount = document.querySelectorAll('.discount');
 let productName = document.querySelectorAll('.product-name');
-let currentPrice = document.querySelectorAll('.f-cur-price');
+// let currentPrice = document.querySelectorAll('.f-cur-price');
 let productUnit = document.querySelectorAll('.f-product-unit');
 let addToCartBtn = document.querySelectorAll('.add-to-cart-btn p');
 let cartContentArea = document.querySelector('.cart-contents-area');
@@ -347,7 +347,7 @@ let isSelectedItemActive = true;
 
         let newPrice = oldPrice - Math.round((oldPrice * (discount / 100)));
 
-        currentPrice[i].textContent = newPrice;
+        // currentPrice[i].textContent = newPrice;+
     }
 })();
 
@@ -1497,7 +1497,7 @@ let overviewProductPrevIndex = null;
             if (overviewProductClassName === featuredProductClassName) {
                 overviewProductName[i].textContent = `${productName[j].textContent}`;
                 overviewProductPrice[i].textContent = `${productPrice[j].textContent}Rs/${productUnit[j].textContent}`;
-                overviewProductDiscountPrice[i].textContent = `${currentPrice[j].textContent}Rs/${productUnit[j].textContent}`;
+                // overviewProductDiscountPrice[i].textContent = `${currentPrice[j].textContent}Rs/${productUnit[j].textContent}`;
                 break;
             }
         }
@@ -2035,7 +2035,7 @@ function showGreatDealsProductPopup(index) {
             if (greatDealsProductClassNameList[i] === freaturedProductClassName) {
                 let featuredProductPrice = `${productPrice[j].textContent}`;
                 let featuredProductDiscount = `${productDiscount[j].textContent}% off`;
-                let featuredProductCurrentPrice = `${currentPrice[j].textContent}`;
+                // let featuredProductCurrentPrice = `${currentPrice[j].textContent}`;
                 let featuredProductUnit = `Rs/${productUnit[j].textContent}`;
 
                 greatDealsProductPrice[i].textContent = featuredProductCurrentPrice;
@@ -2100,7 +2100,7 @@ let callToActionProductClassName = callToActionProductClass.split(' ')[1];
 
             callToActionProductImage.src = `${productImage[i].src}`;
             callToActionDiscountPercentage.textContent = `Save Upto ${productDiscount[i].textContent}%`;
-            callToActionOfferPrice.textContent = `${currentPrice[i].textContent}Rs Only`;
+            // callToActionOfferPrice.textContent = `${currentPrice[i].textContent}Rs Only`;
             callToActionOfferMessage.textContent = `Offer available all ${callToActionProductType.textContent}`;
         }
     }

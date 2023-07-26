@@ -26,10 +26,12 @@ class DiscountController extends Controller
         $request->validate([
             'percentage' => 'required',
             'product_id' => 'required',
+            'expiry_date' => 'required'
         ]);
         $data = Discount::create([
             'percentage' => $request->percentage,
             'product_id' => $request->product_id,
+            'expiry_date' => $request->expiry_date
         ]);
         $data->save();
         return redirect()->route('discounts.index')->with('success', 'Discount created successfully');

@@ -130,7 +130,7 @@
 
 
 
-                <div class="row">
+                {{-- <div class="row">
                     @foreach ($categories as $category)
                         <div>
                             <h2>{{ $category->name }}</h2>
@@ -156,8 +156,6 @@
                                             <del>
                                                 <span class="f-product-price">{{ $product->price }}</span>Rs/pcs
                                             </del>
-                                            {{-- <strong>Discount:</strong>
-                                                <span class="f-product-price">{{ $product->discount['percentage'] }}</span>% --}}
                                             <ins>
                                             </ins>
                                             <span class="f-product-unit">pcs</span>
@@ -169,6 +167,45 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
+                    @endforeach
+                </div> --}}
+
+                <div class="row">
+                    @foreach ($discountedProducts as $product)
+                        <div>
+                            <h2>{{ $product->name }}</h2>
+                        </div>
+                        <div class="d-flex">
+                                <div class="product-wrap broccoli">
+                                    <div class="product-img">
+                                        <img src="{{ url('storage/images/' . $product->image) }}" alt=""
+                                            title="" />
+                                    </div>
+
+                                    <div class="product-icons">
+                                        <div class="add-to-favorite"><span class="icon-heart"></span></div>
+                                        {{-- <p><span class="discount">{{ $product->discount['percentage']}}</span>%</p> --}}
+                                        <p><span class="discount">{{ round($product->discount_info['discount_percent'])}}</span>%</p>
+                                    </div>
+
+                                    <div class="product-description">
+                                       <a href="{{route('productPage', $product->id)}}"><p class="product-name">{{ $product->name }}</p>
+                                        <p class="price">
+                                            <strong>Price:</strong>
+                                            <del>
+                                                <span class="f-product-price">{{ $product->price }}</span>Rs/pcs
+                                            </del>
+                                            <ins>
+                                            </ins>
+                                            <span class="f-product-unit">pcs</span>
+                                        </p>
+                                       </a>
+                                        <div class="add-to-cart-btn">
+                                            <p><span class="icon-cart-plus"></span> Add to Cart</p>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     @endforeach
                 </div>

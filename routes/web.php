@@ -31,6 +31,9 @@ Route::get('/', [DashbordController::class, 'index'])->name('dashbord');
 // Search
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
+// Discount set
+Route::get('/product/{id}', [ProductController::class, 'show']);
+
 // Product page
 Route::get('productPage/{id}', [ProductPageController::class, 'index'])->name('productPage');
 

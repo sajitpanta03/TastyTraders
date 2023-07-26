@@ -9,7 +9,7 @@
                     <h1>Create Discount</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('discounts.index')}}" class="btn btn-primary">Back</a>
+                    <a href="{{ route('discounts.index') }}" class="btn btn-primary">Back</a>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
         <!-- Default box -->
         <div class="container-fluid">
             <form action="/admin/discounts/store" method="post" id="categoryForm" name="categoryForm">
-				@csrf
+                @csrf
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -41,15 +41,22 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name">Expiry Data</label>
+                                    <input type="date" name="expiry_date" id="expiry_date" class="form-control"
+                                        placeholder="Expiry Date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-5 pt-">
+                        <button class="btn btn-primary" type="submit">Create</button>
+                        <a href="" class="btn btn-outline-dark ml-3">Cancel</a>
                     </div>
                 </div>
-            <div class="pb-5 pt-">
-                <button class="btn btn-primary" type="submit">Create</button>
-                <a href="" class="btn btn-outline-dark ml-3">Cancel</a>
-            </div>
-        </div>
-	</form>
-        <!-- /.card -->
+            </form>
+            <!-- /.card -->
     </section>
     <!-- /.content -->
 @endsection

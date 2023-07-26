@@ -9,7 +9,7 @@
                     <h1> Update Category</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('discount.index')}}" class="btn btn-primary">Back</a>
+                    <a href="{{ route('discounts.index')}}" class="btn btn-primary">Back</a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <!-- Default box -->
         <div class="container-fluid">
 
-            <form action="{{ route('discounts.update', $users->id)}}" method="post" id="categoryForm" name="categoryForm">
+            <form action="{{ route('discounts.update', $discounts->id)}}" method="post" id="categoryForm" name="categoryForm">
 				@csrf
                 <div class="card">
                     <div class="card-body">

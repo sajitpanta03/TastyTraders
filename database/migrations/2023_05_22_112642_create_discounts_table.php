@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
+            $table->decimal('percentage')->default(0);
+            $table->date('expiry_date')->nullable();
 
             $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');

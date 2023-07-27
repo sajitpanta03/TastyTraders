@@ -46,17 +46,24 @@ class DiscountController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'expiry_date' => 'required',
             'percentage' => 'required',
         ]);
 
-        $discount = Discount::with('product')->findOrFail($id);
+        $discount = Discount::findOrFail($id);
         $discount->percentage = $request->percentage;
-        $discount->product->name = $request->product_name;
-        $discount->push();
-        $discount->product->push();
+        $discount->expiry_date = $request->expiry_date;
 
-        return redirect()->route('discount.index')->with('success', 'Discount and product updated successfully');
+        $discount->save();
+
+        return redirect()->route('discounts.index')->with('success', 'Discount updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $product = Discount::find($id);
+        $product->delete();
+        return redirect()->route('discounts.index')->with('success', 'Discount deleted successfully');
     }
 }
 

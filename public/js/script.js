@@ -141,8 +141,8 @@ function updateHeroImage(imgIndex) {
     heroImg.removeChild(oldImg);
 
     let newImg = document.createElement('img');
-    newImg.setAttribute('class', 'animate__animated animate__bounceInDown');
-    newImg.src = `img/hero/${imgSrc[imgIndex]}`;
+    // newImg.setAttribute('class', 'animate__animated animate__bounceInDown');
+    newImg.src = `img/hero/${imgSrc[imgIndex]}`; {{asset('images/hero/01.png')}}
 
     heroImg.appendChild(newImg);
 }

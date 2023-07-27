@@ -51,7 +51,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin.product.edit', compact('product'));
+        $categories = Category::all();
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -67,6 +68,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
+        $product->category_id = $request->category;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');

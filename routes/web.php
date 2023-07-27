@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\DiscountController;
@@ -37,6 +38,12 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 // Product page
 Route::get('productPage/{id}', [ProductPageController::class, 'index'])->name('productPage');
 
+// Cart page
+Route::get('cart', [CartController::class, 'show'])->middleware('checkuserlogin');
+
+// Checkout page
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
 // User Login page
 Route::view('/login', 'auth.login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
@@ -45,10 +52,6 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
-// Checkout page
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-
 
 // Admin Dashbord Route
 Route::group(['prefix' => 'admin'], function () {
@@ -92,7 +95,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/discounts/create', [AdminDiscountController::class, 'create'])->name('discounts.create');
         Route::post('/discounts/store', [AdminDiscountController::class, 'store'])->name('discounts.store');
         Route::get('/discounts/edit/{id}', [AdminDiscountController::class, 'edit'])->name('discounts.edit');
-        Route::put('/discounts/update/{id}', [AdminDiscountController::class, 'update'])->name('discounts.update');
+        Route::post('/discounts/update/{id}', [AdminDiscountController::class, 'update'])->name('discounts.update');
         Route::get('/discounts/destroy/{id}', [AdminDiscountController::class, 'destroy'])->name('discounts.destroy');
     });
 });

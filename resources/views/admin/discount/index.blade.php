@@ -39,6 +39,8 @@
                             <tr>
                                 <th>Name</th>
                                 <th width="0">Discount Percentage</th>
+                                <th width="0">Expiry Date</th>
+                                <th width="0">Action</th>
 
                             </tr>
                         </thead>
@@ -54,13 +56,19 @@
                                                     <p>Product not available</p>
                                                 @endif
                                             </div>
-                                    </td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="col-md-3">
-                                                <h6 class="col-md-3">{{ $discount['percentage'] }}%</h6>
-                                            </div>
-                                    </td>
+                                        </td>
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="col-md-3">
+                                                    <h6 class="col-md-3">{{ $discount['percentage'] }}%</h6>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="col-md-3">
+                                                        <h6 class="col-md-3">{{ $discount['expiry_date'] }}</h6>
+                                                    </div>
+                                                </td>
 									<td class="card-body">
 										<a href={{ route('discounts.edit', ['id' => $discount['id']]) }} style="color: #000000;">
 											<i class="fa fa-edit">edit</i>

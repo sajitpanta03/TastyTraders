@@ -8,7 +8,7 @@
         <!-- hero section start -->
         <div class="hero">
             <marquee behavior="scroll" scrollamount="10" direction="left">
-                Welcome to eBazar! Get your daily needs easy and instant from our shop.
+                Welcome to TastyTraders! Get your daily needs easy and instant from our shop.
             </marquee>
 
             <div class="section-wrap hero-wrap">
@@ -286,15 +286,18 @@
                                             <p class="price">
                                                 <strong>Price:</strong>
                                                 <del>
-                                                    <span class="f-product-price">{{ $product->price }}</span>Rs/pcs
+                                                    <span class="f-product-price">{{ $product->price }}</span>Rs/Kg
                                                 </del>
                                                 <ins>
                                                 </ins>
-                                                <span class="f-product-unit">pcs</span>
+                                                <span class="f-product-unit">Kg</span>
                                             </p>
                                         </a>
                                         <div class="add-to-cart-btn">
-                                            <p><span class="icon-cart-plus"></span> Add to Cart</p>
+                                            <!-- Call the addToCart() function when the button is clicked -->
+                                            <p>
+                                                <span class="icon-cart-plus"></span> Add to Cart
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -540,7 +543,7 @@
                             </div>
 
                             <div class="calculate-total-quantity">
-                                <h2>Total Quantity: </h2>
+                                <h2> </h2>
                                 <p>total quantity display here</p>
                             </div>
 
@@ -550,10 +553,12 @@
                             </div>
                         </div>
 
+
                         <div class="confirm-order-button">
-                            <form action="{{ route('checkout') }}">
+                            <a href="{{ route('checkout', ['id' => $product->id]) }}">
                                 <button id="confirm-order-btn">Confirm Order</button>
-                            </form>
+                              </a>
+                                {{-- {{dd($product)}} --}}
                         </div>
                     </div>
                 </div>

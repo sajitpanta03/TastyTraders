@@ -25,7 +25,7 @@
         <div class="icon-links">
             <div id="search-btn"><span class="icon-search"></span></div>
             <div id="customer-center"><span class="icon-phone-alt"></span></div>
-            <div id="icon-shopping-cart"><span class="icon-cart-arrow-down"><span id="item-counter">0</span></div>
+           <div id="icon-shopping-cart"><span class="icon-cart-arrow-down"><span id="item-counter">0</span></div>
             {{-- Check if the user is authenticated --}}
             @guest
                 <a href="{{ route('login') }}">Login</a>&nbsp;|&nbsp;

@@ -27,7 +27,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Dashbord page
-Route::get('/', [DashbordController::class, 'index'])->name('dashbord');
+Route::get('/', [DashbordController::class, 'index'])->name('dashbord')->middleware('check.login');
+Route::get('/guest', [DashbordController::class, 'show'])->name('guest');
 
 // Search
 Route::get('/search', [SearchController::class, 'index'])->name('search');

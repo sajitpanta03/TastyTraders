@@ -23,6 +23,40 @@ function getClassName(elem, classPos) {
     return className;
 }
 
+// Local storage cart
+function addToCart(productId, productName, price, quantity) {
+    // Get the existing cart data from local storage (if any)
+    let cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
+    // Check if the product already exists in the cart
+    if (cartData.hasOwnProperty(productId)) {
+        // If the product exists, update the quantity
+        cartData[productId].quantity += quantity;
+    } else {
+        // If the product doesn't exist, add it to the cart data
+        cartData[productId] = {
+            name: productName,
+            price: price,
+            quantity: quantity,
+        };
+    }
+
+    // Store the updated cart data back to local storage
+    localStorage.setItem('cart', JSON.stringify(cartData));
+
+    // You can display a confirmation message or perform any other actions here
+    alert('Product added to cart!');
+}
+// Retrieve cart data from local storage
+let cartData = JSON.parse(localStorage.getItem('cart'));
+
+// Display cart items in the console
+console.log(cartData);
+
+
+//
+
+
 // ===================================
 //    Add, Get and Remove Class End
 // ===================================

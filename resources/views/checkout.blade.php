@@ -130,6 +130,8 @@ span.price {
             <label for="city"><i class="fa fa-institution"></i> City</label>
             <input type="text" id="city" name="city" placeholder="New York">
 
+            {{-- {{$product}} --}}
+
             <div class="row">
               <div class="col-50">
                 <label for="state">State</label>

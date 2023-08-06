@@ -33,12 +33,12 @@
                 </li>
 
 
-                <li class="nav-item">
-                    <a href="orders.html" class="nav-link">
+                {{-- <li class="nav-item">
+                    <a href="{{ route('orders.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>Orders</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('discounts.index') }}" class="nav-link">
                         <i class="nav-icon  fa fa-percent" aria-hidden="true"></i>

@@ -52,6 +52,7 @@
         <!-- Product Pricing -->
         <p>Description: {{ $product->description }}</p>
            Price:  <span>{{$product->price}} Rs/Kg</span>
+           
 
         </div>
     </div>

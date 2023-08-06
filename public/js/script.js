@@ -1,6 +1,51 @@
 // ===============================
 //    Add, Get and Remove Class
 // ===============================
+// Store the data in database 
+
+
+
+const confirmOrderButton = document.getElementById("confirm-order-btn");
+
+  confirmOrderButton.addEventListener("click", () => {
+    // Gather the necessary data; for example, you might have input fields with IDs
+    const id = generateOrderId(); // You need to implement a function to generate a unique order ID
+    const quantity = parseInt(document.getElementById("quantity").value);
+    const price = parseFloat(document.getElementById("price").value);
+    const product_id = document.getElementById("product-id").value;
+    const user_id = getUserId(); // You need to implement a function to get the user ID
+
+    // Calculate the total price
+    const total_price = quantity * price;
+
+    // Create the data object to be sent to the server
+    const orderData = {
+      id,
+      quantity,
+      price,
+      total_price,
+      product_id,
+      user_id,
+    };
+
+    // Send the data to the server
+    fetch("/confirm-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Order confirmation response:", data);
+        // You can handle the response from the server here if needed
+      })
+      .catch((error) => {
+        console.error("Error confirming order:", error);
+      });
+  });
+
 // add class
 function addClass(elem, classArr) {
     for (let i = 0; i < classArr.length; i++) {
@@ -51,7 +96,7 @@ function addToCart(productId, productName, price, quantity) {
 let cartData = JSON.parse(localStorage.getItem('cart'));
 
 // Display cart items in the console
-console.log(cartData);
+// console.log(cartData);
 
 
 //
@@ -330,6 +375,7 @@ let shoppingCartContentsArea = document.querySelectorAll('.shopping-cart-content
 let featuredProducts = document.querySelectorAll('.product-wrap');
 let productImage = document.querySelectorAll('.product-img img');
 let productPrice = document.querySelectorAll('.f-product-price');
+let productId = document.querySelectorAll('.product-id');
 let productDiscount = document.querySelectorAll('.discount');
 let productName = document.querySelectorAll('.product-name');
 // let currentPrice = document.querySelectorAll('.f-cur-price');
@@ -685,13 +731,13 @@ function displayCartCounter(countValue) {
 }
 
 // create shopping cart item
-function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, presentPrice, itemQuantity) {
+function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, presentPrice, itemQuantity, itemId) {
     let newParentDiv = document.createElement('div');
     newParentDiv.setAttribute('class', 'shopping-details');
 
     let newChildDiv = [];
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 9; i++) {
         newChildDiv[i] = document.createElement('div');
     }
 
@@ -702,11 +748,13 @@ function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, pre
     newChildDiv[4].setAttribute('class', 'present-price');
     newChildDiv[5].setAttribute('class', 'product-quantity');
     newChildDiv[6].setAttribute('class', 'total-amount');
-    newChildDiv[7].setAttribute('class', 'remove-item-btn');
+    newChildDiv[7].setAttribute('class', 'total-amount');
+    newChildDiv[8].setAttribute('class', 'remove-item-btn');
+    
 
     let newChildPara = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
         newChildPara[i] = document.createElement('p');
     }
 
@@ -723,17 +771,20 @@ function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, pre
     newChildPara[4].innerHTML = presentPrice + `Rs/${itemUnit}`;
     newChildPara[5].innerHTML = itemQuantity + ` ${itemUnit}`;
     newChildPara[6].innerHTML = totalPrice + ` Rs`;
+    newChildPara[7].innerHTML = itemId;
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
         newChildDiv[i].appendChild(newChildPara[i]);
     }
 
-    newChildDiv[7].appendChild(removeBtn);
+    newChildDiv[8].appendChild(removeBtn);
 
-    for (let i = 0; i < 8; i++) {
+
+    for (let i = 0; i < 9; i++) {
         newParentDiv.appendChild(newChildDiv[i]);
     }
-
+    // newChildDivId.innerHTML = itemId;
+    // newParentDiv.appendChild(newChildDivId);
     return newParentDiv;
 }
 
@@ -742,16 +793,17 @@ function addItemsToShoppingCartArea(itemIndex, buyBtn, itemQuantity) {
     totalAddToBuyCounter.innerHTML = ++countAddToBuyItem;
     buyBtn.style.background = 'crimson';
     buyBtn.innerHTML = 'Added';
-
     let getQuantity = Number(itemQuantity.value);
     let getItemName = productName[itemIndex].textContent;
+    let getItemId = productId[itemIndex].textContent;
     let getItemPrice = productPrice[itemIndex].textContent;
     let getItemUnit = productUnit[itemIndex].textContent;
     let getItemDiscount = productDiscount[itemIndex].textContent;
     let getPresentPrice = getItemPrice - ((getItemDiscount / 100) * getItemPrice);
-
+    
+    
     getPresentPrice = getPresentPrice.toFixed(2);
-    shoppingCartItem[itemIndex] = createShoppingCartItem(getItemName, getItemPrice, getItemUnit, getItemDiscount, getPresentPrice, getQuantity);
+    shoppingCartItem[itemIndex] = createShoppingCartItem(getItemName, getItemPrice, getItemUnit, getItemDiscount, getPresentPrice, getQuantity, getItemId);
     shoppingDetailsContent.appendChild(shoppingCartItem[itemIndex]);
 
     if (getItemUnit === 'kg') {
@@ -1022,6 +1074,7 @@ let closeBuyingDetailsArea = document.querySelector('.close-buy-area');
 // show shopping cart area
 buyNowBtn.onclick = () => {
     buyingDetailsArea.classList.add('active-buying-details');
+    console.log(buyingDetailsArea);
 }
 
 // remove shopping cart area
@@ -1107,7 +1160,7 @@ let timeCount = setInterval((date, time) => {
     if (totalSeconds < 0) {
         monthIndex = (monthIndex + 1) % 12;
 
-        console.log(`Hello`);
+        // console.log(`Hello`);
 
         if (monthIndex === 0) {
             year = year + 1;

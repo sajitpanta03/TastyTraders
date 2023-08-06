@@ -551,7 +551,7 @@
                         </div>
 
                         <div class="confirm-order-button">
-                            <form action="{{ route('checkout') }}">
+                            <form action="">
                                 <button id="confirm-order-btn">Confirm Order</button>
                             </form>
                         </div>

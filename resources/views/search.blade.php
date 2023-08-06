@@ -141,7 +141,7 @@
 
                                     <div class="product-icons">
                                         <div class="add-to-favorite"><span class="icon-heart"></span></div>
-                                        <p><span class="discount">20</span>% off</p>
+                                        <p><span class="discount">{{$product->discount->percentage}}</span>% off</p>
                                     </div>
 
                                     <div class="product-description">
@@ -287,7 +287,7 @@
                         </div>
 
                         <div class="confirm-order-button">
-                            <form action="{{ route('checkout') }}">
+                            <form action="">
                                 <button id="confirm-order-btn">Confirm Order</button>
                             </form>
                         </div>

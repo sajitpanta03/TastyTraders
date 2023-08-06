@@ -282,6 +282,7 @@
                 
                                     <div class="product-description">
                                         <a href="{{ route('productPage', $product->id) }}">
+                                            <p class="product-id" hidden>{{$product->id}}</p>
                                             <p class="product-name">{{ $product->name }}</p>
                                             <p class="price">
                                                 <strong>Price:</strong>
@@ -294,7 +295,6 @@
                                             </p>
                                         </a>
                                         <div class="add-to-cart-btn">
-                                            <!-- Call the addToCart() function when the button is clicked -->
                                             <p>
                                                 <span class="icon-cart-plus"></span> Add to Cart
                                             </p>
@@ -495,6 +495,8 @@
 
             <!-- buying details/shoping cart area start -->
             <div class="buying-details-area">
+                <div class="primary"><a href="" class="button-like">Back</a></div>
+
                 <div class="buying-details-wrap">
                     <div class="shop-title">
                         <h1>Shopping Cart</h1>
@@ -523,6 +525,9 @@
                                 </div>
                                 <div class="shop-detail total-amount">
                                     <h2>Total Price</h2>
+                                </div>
+                                <div class="shop-detail total-amount">
+                                    <h2>Id</h2>
                                 </div>
                                 <div class="shop-detail remove-all-btn">
                                     <button id="remove-all-items">Remove All</button>
@@ -553,12 +558,13 @@
                             </div>
                         </div>
 
-
-                        <div class="confirm-order-button">
-                            <a href="{{ route('checkout', ['id' => $product->id]) }}">
-                                <button id="confirm-order-btn">Confirm Order</button>
-                              </a>
-                                {{-- {{dd($product)}} --}}
+                        
+                        <div class="confirm-order-button"> 
+                            <form action="/confirm-order" method="post">
+                                @csrf
+                                <button type="submit" id="confirm-order-btn">Confirm Order</button>
+                            </form>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -1790,6 +1790,30 @@ nav .icon-links {
     border-radius: 0.2rem;
 }
 
+#order-status {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+
+.button-like {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.button-like:hover {
+    background-color: #0056b3;
+}
+
+
 #pricing.menu-active {
     padding-top: 3.4rem;
 }

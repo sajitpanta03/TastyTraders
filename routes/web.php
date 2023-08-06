@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminLoginController;
+use App\Http\Controllers\admin\AdminOrderController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DiscountController as AdminDiscountController;
 use App\Http\Controllers\admin\HomeController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductPageController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -42,8 +44,10 @@ Route::get('productPage/{id}', [ProductPageController::class, 'index'])->name('p
 // Cart page
 Route::get('cart', [CartController::class, 'show'])->middleware('checkuserlogin');
 
-// Checkout page
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+// Order page
+// Route::post('/confirm-order', OrderController::class, 'confirmOrder')->name('confirm.order');
+Route::post('/confirm-order', [OrderController::class, 'store']);
+
 
 // User Login page
 Route::view('/login', 'auth.login');
@@ -98,5 +102,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/discounts/edit/{id}', [AdminDiscountController::class, 'edit'])->name('discounts.edit');
         Route::post('/discounts/update/{id}', [AdminDiscountController::class, 'update'])->name('discounts.update');
         Route::get('/discounts/destroy/{id}', [AdminDiscountController::class, 'destroy'])->name('discounts.destroy');
+
+        // Order Route
+        Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');    
     });
 });

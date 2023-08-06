@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use DateTime;
 
@@ -54,56 +55,48 @@ class DashbordController extends Controller
         return view('dash', compact('discountedProducts', 'categories'));
     }
 
+
     private function calculateComplexDiscountBasedOnExpiry($productId)
     {
-        // Retrieve product details from the 'products' table
         $product = Product::find($productId);
-
+    
         if (!$product) {
-            return null; // Product not found
+            return null; 
         }
-
-        // Get the original price and expiry date from the product
+    
         $originalPrice = $product->price;
         $expiryDate = $product->discount->expiry_date ?? null;
-        $maxDiscountPercent = 30;
-
+    
         if ($expiryDate) {
             $expiryDateTime = new DateTime($expiryDate);
             $currentDate = new DateTime();
-
-            // Calculate the total days until expiry
+    
             $totalDays = $currentDate->diff($expiryDateTime)->days;
+    
+            $additionalDiscount = 0;
+    
+            if ($totalDays <= 3) {
+                if ($totalDays === 3) {
+                    $additionalDiscount = 3;
+                } elseif ($totalDays === 2) {
+                    $additionalDiscount = 6;
+                } elseif ($totalDays === 1) {
+                    $additionalDiscount = 10;
+                }
+            }
 
-            $discountFactor = 1 - ($totalDays / ($totalDays + 10));
+            $totalDiscount = ($product->discount->percentage + $additionalDiscount) / 100;
 
-            $discountPercent = $maxDiscountPercent * $discountFactor;
-            $discountPercent = min($discountPercent, $maxDiscountPercent);
-
-            // Calculate the expiry-based discount
-            $expiryBasedDiscount = $originalPrice * ($discountPercent / 100);
-
-            // Retrieve the additional discount percentage from the 'discounts' table
-            $additionalDiscount = $product->discount->percentage ?? 0;
-
-            // Calculate the additional discount
-            $additionalDiscountAmount = $originalPrice * ($additionalDiscount / 100);
-
-            // Calculate the combined discount
-            $totalDiscount = $expiryBasedDiscount + $additionalDiscountAmount;
-
-            // Calculate the final discounted price
-            $discountedPrice = $originalPrice - $totalDiscount;
-
+            $discountedPrice = max($originalPrice - ($originalPrice * $totalDiscount), 0);
+    
             return [
-                'discount_percent' => $discountPercent + $additionalDiscount,
+                'discount_percent' => $product->discount->percentage + $additionalDiscount,
                 'discounted_price' => $discountedPrice
             ];
         } else {
-            // No expiry date, only apply the additional discount if available
             $additionalDiscount = $product->discount->percentage ?? 0;
-            $discountedPrice = $originalPrice - ($originalPrice * ($additionalDiscount / 100));
-
+            $discountedPrice = max($originalPrice - ($originalPrice * ($additionalDiscount / 100)), 0);
+    
             return [
                 'discount_percent' => $additionalDiscount,
                 'discounted_price' => $discountedPrice

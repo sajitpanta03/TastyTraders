@@ -646,7 +646,7 @@ nav .icon-links {
 }
 
 .new-arrival-card {
-    margin-left: 20px;
+    /* margin-left: 20px;
     position: relative;
     min-width: 305px;
     height: 100%;
@@ -654,7 +654,7 @@ nav .icon-links {
     border-radius: 0.1rem;
     -webkit-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out; */
 }
 
 .new-arrival-card::before {
@@ -1725,7 +1725,7 @@ nav .icon-links {
     color: var(--color-light-1);
     font-size: 1.1rem;
     font-family: 'Ubuntu', sans-serif;
-    background: -o-linear-gradient(45deg, orangered 20%, red, red);
+    background: -o-linear-gradient(45deg, orangered , red, red);
     background: linear-gradient(45deg, orangered 20%, red, red);
     border-radius: 0.2rem;
     -webkit-box-sizing: border-box;
@@ -1789,6 +1789,30 @@ nav .icon-links {
     background: var(--color-secondary);
     border-radius: 0.2rem;
 }
+
+#order-status {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+
+.button-like {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.button-like:hover {
+    background-color: #0056b3;
+}
+
 
 #pricing.menu-active {
     padding-top: 3.4rem;
@@ -4975,6 +4999,31 @@ footer p a {
     color: #9fcf3d;
     text-decoration: none;
 }
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
 
 /* ======================
     copyright area end

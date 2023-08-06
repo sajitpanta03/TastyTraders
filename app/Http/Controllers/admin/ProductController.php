@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use DateTime;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -28,7 +29,7 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'image' => 'required|image',    
+            'image' => 'required|image',
         ]);
 
         $data = Product::create([
@@ -50,7 +51,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin.product.edit', compact('product'));
+        $categories = Category::all();
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -66,6 +68,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
+        $product->category_id = $request->category;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');

@@ -1,11 +1,20 @@
 <?php
 
 use App\Http\Controllers\admin\AdminLoginController;
+use App\Http\Controllers\admin\AdminOrderController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\DiscountController as AdminDiscountController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductPageController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,17 +28,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'index');
+// Dashbord page
+Route::get('/', [DashbordController::class, 'index'])->name('dashbord')->middleware('check.login');
+Route::get('/guest', [DashbordController::class, 'show'])->name('guest');
+
+// Search
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+// Discount set
+Route::get('/product/{id}', [ProductController::class, 'show']);
+
+// Product page
+Route::get('productPage/{id}', [ProductPageController::class, 'index'])->name('productPage');
+
+// Cart page
+Route::get('cart', [CartController::class, 'show'])->middleware('checkuserlogin');
+
+// Order page
+// Route::post('/confirm-order', OrderController::class, 'confirmOrder')->name('confirm.order');
+Route::post('/confirm-order', [OrderController::class, 'store']);
+
 
 // User Login page
 Route::view('/login', 'auth.login');
 Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
-Route::get('dashboard', [AuthController::class, 'dashboard']); 
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
 
 // Admin Dashbord Route
 Route::group(['prefix' => 'admin'], function () {
@@ -67,7 +94,16 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
         Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
         Route::get('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+        // Discount Route
+        Route::get('/discounts', [AdminDiscountController::class, 'index'])->name('discounts.index');
+        Route::get('/discounts/create', [AdminDiscountController::class, 'create'])->name('discounts.create');
+        Route::post('/discounts/store', [AdminDiscountController::class, 'store'])->name('discounts.store');
+        Route::get('/discounts/edit/{id}', [AdminDiscountController::class, 'edit'])->name('discounts.edit');
+        Route::post('/discounts/update/{id}', [AdminDiscountController::class, 'update'])->name('discounts.update');
+        Route::get('/discounts/destroy/{id}', [AdminDiscountController::class, 'destroy'])->name('discounts.destroy');
+
+        // Order Route
+        Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');    
     });
 });
-
-

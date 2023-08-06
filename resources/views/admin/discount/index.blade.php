@@ -6,11 +6,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Product</h1>
+                    <h1>Create Discount</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    {{-- <a href="{{ route('products.create') }}" class="btn btn-primary">Create New Product</a> --}}
-                    <a href="{{ route('products.create') }}" class="btn btn-primary">Create New Product</a>
+                    <a href="{{ route('discounts.create') }}" class="btn btn-primary">Create/Edit</a>
                 </div>
             </div>
         </div>
@@ -39,62 +38,45 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Images</th>
-                                <th>Discount</th>
-                                <th>Price</th>
-                                <th>Action</th>
+                                <th width="0">Discount Percentage</th>
+                                <th width="0">Expiry Date</th>
+                                <th width="0">Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($products as $product)
+                            @forelse ($discounts as $discount)
                                 <tr>
                                     <td>
                                         <div class="card-body">
                                             <div class="col-md-3">
-                                                <h6 class="col-md-3">{{ $product['name'] }}</h6>
+                                                @if ($discount->product)
+                                                    <h6 class="col-md-3">{{ $discount->product->name }}</h6>
+                                                @else
+                                                    <p>Product not available</p>
+                                                @endif
                                             </div>
-                                    </td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="col-md-3">
-                                                <h6 class="col-md-3">{{ $product['price'] }}</h6>
-                                            </div>
-                                    </td>
-
-                                    @if (empty($product->discount))
+                                        </td>
                                         <td>
                                             <div class="card-body">
                                                 <div class="col-md-3">
-                                                    <h6 class="col-md-3">No discount</h6>
+                                                    <h6 class="col-md-3">{{ $discount['percentage'] }}%</h6>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    @else
-                                        <td>
-                                            <div class="card-body">
-                                                <div class="col-md-3">
-                                                    <h6 class="col-md-3">{{ $product->discount->percentage }}%</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    @endif
-
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="com-md-3">
-                                                <div class="col-md-1">
-                                                    <img src="{{ asset('storage/images/' . $product->image) }}"
-                                                        alt="profile" title="" class="img-thumbnail">
-                                                </div>
-                                    </td>
-                                    <td class="card-body">
-                                        <a href={{ route('products.edit', ['id' => $product['id']]) }} style="color: #000000;">
-                                            <i class="fa fa-edit">edit</i>
-                                        </a>
-										<a href="{{ route('products.destroy', ['id' => $product['id']]) }}" style="color: #000000;">
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="col-md-3">
+                                                        <h6 class="col-md-3">{{ $discount['expiry_date'] }}</h6>
+                                                    </div>
+                                                </td>
+									<td class="card-body">
+										<a href={{ route('discounts.edit', ['id' => $discount['id']]) }} style="color: #000000;">
+											<i class="fa fa-edit">edit</i>
+										</a>
+										<a href="{{ route('discounts.destroy', ['id' => $discount['id']]) }}" style="color: #000000;">
 											<i class="text-danger w-4 h-4 mr-1 fa fa-trash"></i>Delete
 										</a>
-                                    </td>
+									</td>
                                 </tr>
                             @empty
                                 <tr></tr>

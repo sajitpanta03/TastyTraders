@@ -49,6 +49,11 @@
                                   Login
                               </button>
                           </div>
+                
+                          <span>
+                            <a href="/guest" class="btn btn-success">Go to Guest Page</a>
+                        </span>
+                      
                       </form>
                   </div>
               </div>

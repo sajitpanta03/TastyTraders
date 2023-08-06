@@ -42,8 +42,8 @@
                 <input type="file" name="image">
                 @error('image')
                     <span class="text-red-600 text-sm">{{ $message }}</span>
-                @enderror 
-                <br><br>  
+                @enderror
+                <br><br>
                 <div class="pb-5 pt-">
                     <button class="btn btn-primary" type="submit">Create</button>
                     <a href="" class="btn btn-outline-dark ml-3">Cancel</a>

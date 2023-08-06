@@ -1,41 +1,8 @@
- <!-- header section start -->
- {{-- <header>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="#"><span>TastyTraders.</span></a>
-        </div>
-
-        <ul class="menu-items">
-            <li><a href="#top">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-
-        <div class="search-box">
-            <div class="search-icon">
-                <span class="icon-search"></span>
-            </div>
-            <input type="text" placeholder="Search...">
-        </div>
-
-        <div class="icon-links">
-            <div id="search-btn"><span class="icon-search"></span></div>
-            <div id="customer-center"><span class="icon-phone-alt"></span></div>
-            <div id="icon-shopping-cart"><span class="icon-cart-arrow-down"><span id="item-counter">0</span></div>
-                <a href="{{route('login') }}">Login</a>&nbsp|&nbsp
-                <a href="{{route('register') }}">Register</a> 
-            <div id="toggle-bar"><span class="toggler"></span></div>
-        </div>
-    </nav>
-</header> --}}
-
 <!-- header section start -->
 <header>
     <nav class="navbar">
         <div class="logo">
-            <a href="#"><span>TastyTraders.</span></a>
+            <a href="/"><span>TastyTraders.</span></a>
         </div>
 
         <ul class="menu-items">
@@ -46,17 +13,19 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <div class="search-box">
-            <div class="search-icon">
-                <span class="icon-search"></span>
+        <form action="{{route('search')}}">
+            <div class="search-box">
+                <button type="submit" class="search-icon">
+                    <span class="icon-search"></span>
+                </button>
+                <input type="text" name="search" placeholder="Search product">
             </div>
-            <input type="text" placeholder="Search...">
-        </div>
+        </form>
 
         <div class="icon-links">
             <div id="search-btn"><span class="icon-search"></span></div>
             <div id="customer-center"><span class="icon-phone-alt"></span></div>
-            <div id="icon-shopping-cart"><span class="icon-cart-arrow-down"><span id="item-counter">0</span></div>
+           <div id="icon-shopping-cart"><span class="icon-cart-arrow-down"><span id="item-counter">0</span></div>
             {{-- Check if the user is authenticated --}}
             @guest
                 <a href="{{ route('login') }}">Login</a>&nbsp;|&nbsp;

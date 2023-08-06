@@ -15,7 +15,7 @@
                     <a href="dashboard.html" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
-                    </a>																
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('categories.index') }}" class="nav-link">
@@ -23,24 +23,24 @@
                         <p>Category</p>
                     </a>
                 </li>
-     
-   
+
+
                 <li class="nav-item">
                     <a href="{{ route('products.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tag"></i>
                         <p>Products</p>
                     </a>
                 </li>
-                
-  						
-                <li class="nav-item">
-                    <a href="orders.html" class="nav-link">
+
+
+                {{-- <li class="nav-item">
+                    <a href="{{ route('orders.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>Orders</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                    <a href="discount.html" class="nav-link">
+                    <a href="{{ route('discounts.index') }}" class="nav-link">
                         <i class="nav-icon  fa fa-percent" aria-hidden="true"></i>
                         <p>Discount</p>
                     </a>
@@ -51,7 +51,7 @@
                         <p>Users</p>
                     </a>
                 </li>
-							
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

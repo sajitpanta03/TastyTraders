@@ -27,6 +27,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
+                                <select name="category">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select><br><br>
                                 <div class="mb-3">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ $product->name }}">

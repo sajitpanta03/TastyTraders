@@ -1,6 +1,50 @@
 // ===============================
 //    Add, Get and Remove Class
 // ===============================
+// Store the data in database 
+
+
+
+const confirmOrderButton = document.getElementById("confirm-order-btn");
+
+  confirmOrderButton.addEventListener("click", () => {
+    // Gather the necessary data; for example, you might have input fields with IDs
+    const id = generateOrderId(); // You need to implement a function to generate a unique order ID
+    const quantity = parseInt(document.getElementById("quantity").value);
+    const price = parseFloat(document.getElementById("price").value);
+    const product_id = document.getElementById("product-id").value;
+    const user_id = getUserId(); // You need to implement a function to get the user ID
+
+    // Calculate the total price
+    const total_price = quantity * price;
+
+    // Create the data object to be sent to the server
+    const orderData = {
+      id,
+      quantity,
+      price,
+      total_price,
+      product_id,
+      user_id,
+    };
+
+    // Send the data to the server
+    fetch("/confirm-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Order confirmation response:", data);
+        // You can handle the response from the server here if needed
+      })
+      .catch((error) => {
+        console.error("Error confirming order:", error);
+      });
+  });
 
 // add class
 function addClass(elem, classArr) {
@@ -23,6 +67,40 @@ function getClassName(elem, classPos) {
 
     return className;
 }
+
+// Local storage cart
+function addToCart(productId, productName, price, quantity) {
+    // Get the existing cart data from local storage (if any)
+    let cartData = JSON.parse(localStorage.getItem('cart')) || {};
+
+    // Check if the product already exists in the cart
+    if (cartData.hasOwnProperty(productId)) {
+        // If the product exists, update the quantity
+        cartData[productId].quantity += quantity;
+    } else {
+        // If the product doesn't exist, add it to the cart data
+        cartData[productId] = {
+            name: productName,
+            price: price,
+            quantity: quantity,
+        };
+    }
+
+    // Store the updated cart data back to local storage
+    localStorage.setItem('cart', JSON.stringify(cartData));
+
+    // You can display a confirmation message or perform any other actions here
+    alert('Product added to cart!');
+}
+// Retrieve cart data from local storage
+let cartData = JSON.parse(localStorage.getItem('cart'));
+
+// Display cart items in the console
+// console.log(cartData);
+
+
+//
+
 
 // ===================================
 //    Add, Get and Remove Class End
@@ -142,8 +220,8 @@ function updateHeroImage(imgIndex) {
     heroImg.removeChild(oldImg);
 
     let newImg = document.createElement('img');
-    newImg.setAttribute('class', 'animate__animated animate__bounceInDown');
-    newImg.src = `img/hero/${imgSrc[imgIndex]}`;
+    // newImg.setAttribute('class', 'animate__animated animate__bounceInDown');
+    newImg.src = `img/hero/${imgSrc[imgIndex]}`; {{asset('images/hero/01.png')}}
 
     heroImg.appendChild(newImg);
 }
@@ -297,9 +375,10 @@ let shoppingCartContentsArea = document.querySelectorAll('.shopping-cart-content
 let featuredProducts = document.querySelectorAll('.product-wrap');
 let productImage = document.querySelectorAll('.product-img img');
 let productPrice = document.querySelectorAll('.f-product-price');
+let productId = document.querySelectorAll('.product-id');
 let productDiscount = document.querySelectorAll('.discount');
 let productName = document.querySelectorAll('.product-name');
-let currentPrice = document.querySelectorAll('.f-cur-price');
+// let currentPrice = document.querySelectorAll('.f-cur-price');
 let productUnit = document.querySelectorAll('.f-product-unit');
 let addToCartBtn = document.querySelectorAll('.add-to-cart-btn p');
 let cartContentArea = document.querySelector('.cart-contents-area');
@@ -348,7 +427,7 @@ let isSelectedItemActive = true;
 
         let newPrice = oldPrice - Math.round((oldPrice * (discount / 100)));
 
-        currentPrice[i].textContent = newPrice;
+        // currentPrice[i].textContent = newPrice;+
     }
 })();
 
@@ -447,7 +526,7 @@ function createSelectedProductsContent(image, name, price, unit, discount, prese
 
     // childrens of newCartDetails
     let newHeading2 = document.createElement('h2');
-    newHeading2.textContent = 'Product Details';
+    // newHeading2.textContent = 'Product Details';
 
     let newPara = [];
     let newStrong = [];
@@ -460,8 +539,6 @@ function createSelectedProductsContent(image, name, price, unit, discount, prese
     newStrong[1].textContent = 'Price: ';
     newStrong[2].textContent = 'Discount: ';
     newStrong[3].textContent = 'Quantity: ';
-    newStrong[4].textContent = 'Preservatives: ';
-    newStrong[5].textContent = 'Added Time: ';
 
     for (let i = 0; i < 6; i++) {
         newPara[i].appendChild(newStrong[i]);
@@ -482,21 +559,21 @@ function createSelectedProductsContent(image, name, price, unit, discount, prese
     }
 
     newSpan[0].textContent = name;
-    newSpan[1].textContent = price + `Tk/${unit}`;
+    newSpan[1].textContent = price + `Rs/${unit}`;
     newSpan[2].textContent = discount + '%';
 
     for (let i = 0; i < 3; i++) {
         newPara[i].appendChild(newSpan[i]);
     }
 
-    let preservativeSpan = document.createElement('span');
-    preservativeSpan.textContent = preservative;
+    // let preservativeSpan = document.createElement('span');
+    // preservativeSpan.textContent = preservative;
 
-    let timeSpan = document.createElement('span');
-    timeSpan.textContent = time;
+    // let timeSpan = document.createElement('span');
+    // timeSpan.textContent = time;
 
-    newPara[4].appendChild(preservativeSpan);
-    newPara[5].appendChild(timeSpan);
+    // newPara[4].appendChild(preservativeSpan);
+    // newPara[5].appendChild(timeSpan);
 
     let newShoppingButton = [];
 
@@ -654,13 +731,13 @@ function displayCartCounter(countValue) {
 }
 
 // create shopping cart item
-function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, presentPrice, itemQuantity) {
+function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, presentPrice, itemQuantity, itemId) {
     let newParentDiv = document.createElement('div');
     newParentDiv.setAttribute('class', 'shopping-details');
 
     let newChildDiv = [];
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 9; i++) {
         newChildDiv[i] = document.createElement('div');
     }
 
@@ -671,11 +748,13 @@ function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, pre
     newChildDiv[4].setAttribute('class', 'present-price');
     newChildDiv[5].setAttribute('class', 'product-quantity');
     newChildDiv[6].setAttribute('class', 'total-amount');
-    newChildDiv[7].setAttribute('class', 'remove-item-btn');
+    newChildDiv[7].setAttribute('class', 'total-amount');
+    newChildDiv[8].setAttribute('class', 'remove-item-btn');
+    
 
     let newChildPara = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
         newChildPara[i] = document.createElement('p');
     }
 
@@ -687,22 +766,25 @@ function createShoppingCartItem(itemName, itemPrice, itemUnit, itemDiscount, pre
     totalPrice = totalPrice.toFixed(2);
 
     newChildPara[1].innerHTML = itemName;
-    newChildPara[2].innerHTML = itemPrice + `Tk/${itemUnit}`;
+    newChildPara[2].innerHTML = itemPrice + `Rs/${itemUnit}`;
     newChildPara[3].innerHTML = itemDiscount + `%`;
-    newChildPara[4].innerHTML = presentPrice + `Tk/${itemUnit}`;
+    newChildPara[4].innerHTML = presentPrice + `Rs/${itemUnit}`;
     newChildPara[5].innerHTML = itemQuantity + ` ${itemUnit}`;
-    newChildPara[6].innerHTML = totalPrice + ` Tk`;
+    newChildPara[6].innerHTML = totalPrice + ` Rs`;
+    newChildPara[7].innerHTML = itemId;
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
         newChildDiv[i].appendChild(newChildPara[i]);
     }
 
-    newChildDiv[7].appendChild(removeBtn);
+    newChildDiv[8].appendChild(removeBtn);
 
-    for (let i = 0; i < 8; i++) {
+
+    for (let i = 0; i < 9; i++) {
         newParentDiv.appendChild(newChildDiv[i]);
     }
-
+    // newChildDivId.innerHTML = itemId;
+    // newParentDiv.appendChild(newChildDivId);
     return newParentDiv;
 }
 
@@ -711,16 +793,17 @@ function addItemsToShoppingCartArea(itemIndex, buyBtn, itemQuantity) {
     totalAddToBuyCounter.innerHTML = ++countAddToBuyItem;
     buyBtn.style.background = 'crimson';
     buyBtn.innerHTML = 'Added';
-
     let getQuantity = Number(itemQuantity.value);
     let getItemName = productName[itemIndex].textContent;
+    let getItemId = productId[itemIndex].textContent;
     let getItemPrice = productPrice[itemIndex].textContent;
     let getItemUnit = productUnit[itemIndex].textContent;
     let getItemDiscount = productDiscount[itemIndex].textContent;
     let getPresentPrice = getItemPrice - ((getItemDiscount / 100) * getItemPrice);
-
+    
+    
     getPresentPrice = getPresentPrice.toFixed(2);
-    shoppingCartItem[itemIndex] = createShoppingCartItem(getItemName, getItemPrice, getItemUnit, getItemDiscount, getPresentPrice, getQuantity);
+    shoppingCartItem[itemIndex] = createShoppingCartItem(getItemName, getItemPrice, getItemUnit, getItemDiscount, getPresentPrice, getQuantity, getItemId);
     shoppingDetailsContent.appendChild(shoppingCartItem[itemIndex]);
 
     if (getItemUnit === 'kg') {
@@ -961,7 +1044,7 @@ function controlFavoriteProductItems(itemIndex) {
     // select 'Add to Cart' button of favorite item
     let favoriteItemAddToCartBtn = newfavoriteItem[itemIndex].children[2].children[2].children[0];
 
-    // actions while click 'Add to Cart' button of favorite item 
+    // actions while click 'Add to Cart' button of favorite item
     favoriteItemAddToCartBtn.addEventListener('click', function () {
         controlSelectedProductItems(itemIndex);
     });
@@ -976,7 +1059,7 @@ function controlFavoriteProductItems(itemIndex) {
             controlSelectedProductItems(i);
         });
 
-        // actions while click favorite icon 
+        // actions while click favorite icon
         favoriteIcon[i].addEventListener('click', function () {
             controlFavoriteProductItems(i);
         });
@@ -991,6 +1074,7 @@ let closeBuyingDetailsArea = document.querySelector('.close-buy-area');
 // show shopping cart area
 buyNowBtn.onclick = () => {
     buyingDetailsArea.classList.add('active-buying-details');
+    console.log(buyingDetailsArea);
 }
 
 // remove shopping cart area
@@ -1076,7 +1160,7 @@ let timeCount = setInterval((date, time) => {
     if (totalSeconds < 0) {
         monthIndex = (monthIndex + 1) % 12;
 
-        console.log(`Hello`);
+        // console.log(`Hello`);
 
         if (monthIndex === 0) {
             year = year + 1;
@@ -1347,7 +1431,7 @@ let timeCount3 = setInterval((date, time) => {
 
 
 // =================================
-//    Outer Products Control Area 
+//    Outer Products Control Area
 // =================================
 
 // selecting notification box elements
@@ -1466,7 +1550,7 @@ function addOuterProductToFavoriteProductArea(productClass) {
 }
 
 // =====================================
-//    Outer Products Control Area End 
+//    Outer Products Control Area End
 // =====================================
 
 
@@ -1474,7 +1558,7 @@ function addOuterProductToFavoriteProductArea(productClass) {
 
 
 // =================================
-//    Product Overview Area Start 
+//    Product Overview Area Start
 // =================================
 
 // selecting product overview elements
@@ -1499,8 +1583,8 @@ let overviewProductPrevIndex = null;
 
             if (overviewProductClassName === featuredProductClassName) {
                 overviewProductName[i].textContent = `${productName[j].textContent}`;
-                overviewProductPrice[i].textContent = `${productPrice[j].textContent}Tk/${productUnit[j].textContent}`;
-                overviewProductDiscountPrice[i].textContent = `${currentPrice[j].textContent}Tk/${productUnit[j].textContent}`;
+                overviewProductPrice[i].textContent = `${productPrice[j].textContent}Rs/${productUnit[j].textContent}`;
+                // overviewProductDiscountPrice[i].textContent = `${currentPrice[j].textContent}Rs/${productUnit[j].textContent}`;
                 break;
             }
         }
@@ -1534,7 +1618,7 @@ let overviewProductPrevIndex = null;
 })();
 
 // ===============================
-//    Product Overview Area End 
+//    Product Overview Area End
 // ===============================
 
 
@@ -1724,7 +1808,7 @@ function updatePopularProductInfo(index) {
             let freaturedProductClassName = getClassName(featuredProducts[j], 1);
             if (recentProductClassNameList[i] === freaturedProductClassName) {
                 recentProductItemName[i].textContent = `${productName[j].textContent}`;
-                recentProductItemPrice[i].textContent = `${productPrice[j].textContent} Tk/${productUnit[j].textContent}`;
+                recentProductItemPrice[i].textContent = `${productPrice[j].textContent} Rs/${productUnit[j].textContent}`;
                 recentProductItemUnits[i].textContent = `${productUnit[j].textContent}`;
             }
         }
@@ -2038,8 +2122,8 @@ function showGreatDealsProductPopup(index) {
             if (greatDealsProductClassNameList[i] === freaturedProductClassName) {
                 let featuredProductPrice = `${productPrice[j].textContent}`;
                 let featuredProductDiscount = `${productDiscount[j].textContent}% off`;
-                let featuredProductCurrentPrice = `${currentPrice[j].textContent}`;
-                let featuredProductUnit = `Tk/${productUnit[j].textContent}`;
+                // let featuredProductCurrentPrice = `${currentPrice[j].textContent}`;
+                let featuredProductUnit = `Rs/${productUnit[j].textContent}`;
 
                 greatDealsProductPrice[i].textContent = featuredProductCurrentPrice;
                 greatDealsProductPrevPrice[i].textContent = featuredProductPrice;
@@ -2103,7 +2187,7 @@ let callToActionProductClassName = callToActionProductClass.split(' ')[1];
 
             callToActionProductImage.src = `${productImage[i].src}`;
             callToActionDiscountPercentage.textContent = `Save Upto ${productDiscount[i].textContent}%`;
-            callToActionOfferPrice.textContent = `${currentPrice[i].textContent}Tk Only`;
+            // callToActionOfferPrice.textContent = `${currentPrice[i].textContent}Rs Only`;
             callToActionOfferMessage.textContent = `Offer available all ${callToActionProductType.textContent}`;
         }
     }

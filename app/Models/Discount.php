@@ -5,22 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Discount extends Model
 {
-
-    protected $table = 'categories';
-
-    protected $with = [
-        'product'
-    ];
-    protected $fillable = [
-        'name'
-    ];
-
     use HasFactory;
+
+    protected $fillable = [
+        'percentage',
+        'product_id',
+        'expiry_date'
+    ];
 
     public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

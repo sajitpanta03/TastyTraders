@@ -282,19 +282,22 @@
                 
                                     <div class="product-description">
                                         <a href="{{ route('productPage', $product->id) }}">
+                                            <p class="product-id" hidden>{{$product->id}}</p>
                                             <p class="product-name">{{ $product->name }}</p>
                                             <p class="price">
                                                 <strong>Price:</strong>
                                                 <del>
-                                                    <span class="f-product-price">{{ $product->price }}</span>Rs/pcs
+                                                    <span class="f-product-price">{{ $product->price }}</span>Rs/Kg
                                                 </del>
                                                 <ins>
                                                 </ins>
-                                                <span class="f-product-unit">pcs</span>
+                                                <span class="f-product-unit">Kg</span>
                                             </p>
                                         </a>
                                         <div class="add-to-cart-btn">
-                                           <a href="/login"><p><span class="icon-cart-plus"></span> Add to Cart</p></a>
+                                            <p>
+                                                <span class="icon-cart-plus"></span> Add to Cart
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -471,7 +474,7 @@
                                 </p>
                             </div>
                             <div class="buy-items-button">
-                                <button id="buy-items">Buy Items</button>   
+                                <button id="buy-items">Buy Items</button>
                             </div>
                         </div>
                     </div>
@@ -492,6 +495,8 @@
 
             <!-- buying details/shoping cart area start -->
             <div class="buying-details-area">
+                <div class="primary"><a href="" class="button-like">Back</a></div>
+
                 <div class="buying-details-wrap">
                     <div class="shop-title">
                         <h1>Shopping Cart</h1>
@@ -521,6 +526,9 @@
                                 <div class="shop-detail total-amount">
                                     <h2>Total Price</h2>
                                 </div>
+                                <div class="shop-detail total-amount">
+                                    <h2>Id</h2>
+                                </div>
                                 <div class="shop-detail remove-all-btn">
                                     <button id="remove-all-items">Remove All</button>
                                 </div>
@@ -540,7 +548,7 @@
                             </div>
 
                             <div class="calculate-total-quantity">
-                                <h2>Total Quantity: </h2>
+                                <h2> </h2>
                                 <p>total quantity display here</p>
                             </div>
 
@@ -550,10 +558,13 @@
                             </div>
                         </div>
 
-                        <div class="confirm-order-button">
-                            <form action="">
-                                <button id="confirm-order-btn">Confirm Order</button>
+                        
+                        <div class="confirm-order-button"> 
+                            <form action="/confirm-order" method="post">
+                                @csrf
+                                <button type="submit" id="confirm-order-btn">Confirm Order</button>
                             </form>
+                        </div>
                         </div>
                     </div>
                 </div>

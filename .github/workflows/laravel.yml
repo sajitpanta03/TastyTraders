@@ -48,4 +48,3 @@ jobs:
       run: |
         echo "Tests failed - attempting composer update"
         composer update
-        php artisan test
